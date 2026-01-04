@@ -2,27 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AniPulse</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AniPulse - Real-time Anime Tracker & News" />
+  <title>AniPulse - Anime Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
 
+  <!-- Main app container -->
   <div id="app">
     <header>
-      <h1>🔥 AniPulse</h1>
-      <p>Real-Time Anime Tracker</p>
+      <h1>AniPulse</h1>
+      <p>Your Real-Time Anime Tracker</p>
     </header>
 
-    <section id="airing">
+    <!-- Airing Now Section -->
+    <section id="airing-now">
       <h2>Airing Now</h2>
-      <div class="grid" id="airing-list"></div>
+      <div class="anime-grid" id="airing-list"></div>
     </section>
 
-    <section id="news">
-      <h2>Anime News</h2>
+    <!-- Upcoming Anime Section -->
+    <section id="upcoming-anime">
+      <h2>Upcoming Anime</h2>
+      <div class="anime-grid" id="upcoming-list"></div>
+    </section>
+
+    <!-- Anime News Section -->
+    <section id="anime-news">
+      <h2>Latest Anime News</h2>
       <ul id="news-list"></ul>
     </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Powered by AniPulse</p>
+    </footer>
   </div>
 
   <script src="api.js"></script>
