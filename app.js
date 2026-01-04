@@ -1,28 +1,52 @@
-async function loadAiring() {
-  const list = document.getElementById('airing-list');
-  const anime = await getAiring();
+// DOM Elements
+const airingList = document.getElementById('airing-list');
+const upcomingList = document.getElementById('upcoming-list');
+const newsList = document.getElementById('news-list');
 
-  anime.forEach(a => {
-    const div = document.createElement('div');
-    div.className = 'card';
-    div.innerHTML = `
-      <img src="${a.images.webp.image_url}">
-      <h3>${a.title}</h3>
+// Load Airing Anime
+async function loadAiringAnime() {
+  const airingData = await fetchAiringAnime();
+  airingData.forEach(anime => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <img src="${anime.images.webp.image_url}" alt="${anime.title}">
+      <h3>${anime.title}</h3>
     `;
-    list.appendChild(div);
+    airingList.appendChild(card);
   });
 }
 
-async function loadNews() {
-  const list = document.getElementById('news-list');
-  const news = await getNews();
-
-  news.forEach(n => {
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="${n.link}" target="_blank">${n.title}</a>`;
-    list.appendChild(li);
+// Load Upcoming Anime
+async function loadUpcomingAnime() {
+  const upcomingData = await fetchUpcomingAnime();
+  upcomingData.forEach(anime => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <img src="${anime.images.webp.image_url}" alt="${anime.title}">
+      <h3>${anime.title}</h3>
+    `;
+    upcomingList.appendChild(card);
   });
 }
 
-loadAiring();
-loadNews();
+// Load Anime News
+async function loadAnimeNews() {
+  const newsData = await fetchAnimeNews();
+  newsData.forEach(news => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<a href="${news.link}" target="_blank">${news.title}</a>`;
+    newsList.appendChild(listItem);
+  });
+}
+
+// Initialize the App
+async function initApp() {
+  await loadAiringAnime();
+  await loadUpcomingAnime();
+  await loadAnimeNews();
+}
+
+// Run the App
+initApp();
